@@ -21,7 +21,7 @@ var json_POINTSTRAJET1 ={
          "geometry":{  
             "type":"Point",
             "coordinates":[  
-               8.975,
+               2.287592,
                48.862725
             ]
          }
