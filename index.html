@@ -132,129 +132,7 @@
             layer.bindPopup(popupContent);
         }
 
-         function style_POINTSTRAJET1_1(feature) {
-            switch(feature.properties['PAYS'].toString()) {
-                 case 'NOUS':
-                    return {
-                iconUrl: 'images/0.png',
-                pane: 'pane_POINTSTRAJET1'               
-            }
-                    break;
-                case 'Argentine':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(202,135,33,1.0)',
-            }
-                    break;
-                case 'Bolivie':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(84,173,205,1.0)',
-            }
-                    break;
-                case 'Brésil':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(186,224,80,1.0)',
-            }
-                    break;
-                case 'Chili':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(202,100,107,1.0)',
-            }
-                    break;
-                case 'Colombie':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(14,30,210,1.0)',
-            }
-                    break;
-                case 'Costa Rica':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(144,38,219,1.0)',
-            }
-                    break;
-                case 'France':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(37,232,23,1.0)',
-            }
-                    break;
-                case 'Pérou':
-                    return {
-                pane: 'pane_POINTSTRAJET1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fillOpacity: 1,
-                fillColor: 'rgba(109,213,172,1.0)',
-            }
-                    break;
-            }
-        }
-
+  
         function style_POINTSTRAJET1_0(feature) {
             switch(feature.properties['PAYS'].toString()) {
                  case 'NOUS':
@@ -401,7 +279,7 @@
         bounds_group.addLayer(layer_POINTSTRAJET1);
         map.addLayer(layer_POINTSTRAJET1);
         var baseMaps = {};
-        //L.control.layers(baseMaps,{'POINTS_TRAJET<br /><table><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Argentine0.png" /></td><td>Argentine</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Bolivie1.png" /></td><td>Bolivie</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Brsil2.png" /></td><td>Brésil</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Chili3.png" /></td><td>Chili</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Colombie4.png" /></td><td>Colombie</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_CostaRica5.png" /></td><td>Costa Rica</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_France6.png" /></td><td>France</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Prou7.png" /></td><td>Pérou</td></tr></table>': layer_POINTSTRAJET1,'<img src="legend/LINESTRAJET0.png" /> LINES_TRAJET': layer_LINESTRAJET0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'POINTS_TRAJET<br /><table><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Argentine0.png" /></td><td>Argentine</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Bolivie1.png" /></td><td>Bolivie</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Brsil2.png" /></td><td>Brésil</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Chili3.png" /></td><td>Chili</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Colombie4.png" /></td><td>Colombie</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_CostaRica5.png" /></td><td>Costa Rica</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_France6.png" /></td><td>France</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Prou7.png" /></td><td>Pérou</td></tr></table>': layer_POINTSTRAJET1,'<img src="legend/LINESTRAJET0.png" /> LINES_TRAJET': layer_LINESTRAJET0,},{collapsed:true}).addTo(map);
         setBounds();
         </script>
     </body>
