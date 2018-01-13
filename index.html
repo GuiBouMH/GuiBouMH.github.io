@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="data/LINESTRAJET0.js"></script>
+        <script src="data/POINTSTRAJET1.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-74.4310145891,-156.049953161],[71.5073119325,32.9500468129]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_LINESTRAJET0(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>DEPART</strong><br />' + (feature.properties['DEPART'] !== null ? Autolinker.link(String(feature.properties['DEPART'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ARRIVEE</strong><br />' + (feature.properties['ARRIVEE'] !== null ? Autolinker.link(String(feature.properties['ARRIVEE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>DUREE</strong><br />' + (feature.properties['DUREE'] !== null ? Autolinker.link(String(feature.properties['DUREE'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function style_LINESTRAJET0_0() {
+            return {
+                pane: 'pane_LINESTRAJET0',
+            }
+        }
+        function style_LINESTRAJET0_1() {
+            return {
+                pane: 'pane_LINESTRAJET0',
+                opacity: 1,
+                color: 'rgba(0,11,170,1.0)',
+                dashArray: '1,5',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_LINESTRAJET0');
+        map.getPane('pane_LINESTRAJET0').style.zIndex = 400;
+        map.getPane('pane_LINESTRAJET0').style['mix-blend-mode'] = 'normal';
+    var layer_LINESTRAJET0 = new L.geoJson.multiStyle(json_LINESTRAJET0, {
+        attribution: '<a href=""></a>',
+        pane: 'pane_LINESTRAJET0',
+        onEachFeature: pop_LINESTRAJET0,
+        styles: [style_LINESTRAJET0_0,style_LINESTRAJET0_1,]
+    });
+        bounds_group.addLayer(layer_LINESTRAJET0);
+        map.addLayer(layer_LINESTRAJET0);
+        function pop_POINTSTRAJET1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+           var popupContent = '<table>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? Autolinker.link(String(feature.properties['ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>VILLE</strong><br />' + (feature.properties['VILLE'] !== null ? Autolinker.link(String(feature.properties['VILLE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PAYS</strong><br />' + (feature.properties['PAYS'] !== null ? Autolinker.link(String(feature.properties['PAYS'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+         function style_POINTSTRAJET1_1(feature) {
+            switch(feature.properties['PAYS'].toString()) {
+                 case 'NOUS':
+                    return {
+                iconUrl: 'images/0.png',
+                pane: 'pane_POINTSTRAJET1'               
+            }
+                    break;
+                case 'Argentine':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,135,33,1.0)',
+            }
+                    break;
+                case 'Bolivie':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,173,205,1.0)',
+            }
+                    break;
+                case 'Brésil':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,224,80,1.0)',
+            }
+                    break;
+                case 'Chili':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,100,107,1.0)',
+            }
+                    break;
+                case 'Colombie':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(14,30,210,1.0)',
+            }
+                    break;
+                case 'Costa Rica':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,38,219,1.0)',
+            }
+                    break;
+                case 'France':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(37,232,23,1.0)',
+            }
+                    break;
+                case 'Pérou':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,213,172,1.0)',
+            }
+                    break;
+            }
+        }
+
+        function style_POINTSTRAJET1_0(feature) {
+            switch(feature.properties['PAYS'].toString()) {
+                 case 'NOUS':
+                    return {
+                iconUrl: 'images/0.png',
+                pane: 'pane_POINTSTRAJET1'               
+            }
+                    break;
+                case 'Argentine':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,135,33,1.0)',
+            }
+                    break;
+                case 'Bolivie':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,173,205,1.0)',
+            }
+                    break;
+                case 'Brésil':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,224,80,1.0)',
+            }
+                    break;
+                case 'Chili':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,100,107,1.0)',
+            }
+                    break;
+                case 'Colombie':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(14,30,210,1.0)',
+            }
+                    break;
+                case 'Costa Rica':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,38,219,1.0)',
+            }
+                    break;
+                case 'France':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(37,232,23,1.0)',
+            }
+                    break;
+                case 'Pérou':
+                    return {
+                pane: 'pane_POINTSTRAJET1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,213,172,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_POINTSTRAJET1');
+        map.getPane('pane_POINTSTRAJET1').style.zIndex = 401;
+        map.getPane('pane_POINTSTRAJET1').style['mix-blend-mode'] = 'normal';
+        var layer_POINTSTRAJET1 = new L.geoJson(json_POINTSTRAJET1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_POINTSTRAJET1',
+            onEachFeature: pop_POINTSTRAJET1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                if (feature.properties['ID'] == '0'){
+                    return L.marker(latlng, {
+                                                iconUrl: 'images/0.png'             
+                                            }
+                                    );
+                }                
+                return L.circleMarker(latlng, style_POINTSTRAJET1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_POINTSTRAJET1);
+        map.addLayer(layer_POINTSTRAJET1);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'POINTS_TRAJET<br /><table><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Argentine0.png" /></td><td>Argentine</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Bolivie1.png" /></td><td>Bolivie</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Brsil2.png" /></td><td>Brésil</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Chili3.png" /></td><td>Chili</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Colombie4.png" /></td><td>Colombie</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_CostaRica5.png" /></td><td>Costa Rica</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_France6.png" /></td><td>France</td></tr><tr><td style="text-align: center;"><img src="legend/POINTSTRAJET1_Prou7.png" /></td><td>Pérou</td></tr></table>': layer_POINTSTRAJET1,'<img src="legend/LINESTRAJET0.png" /> LINES_TRAJET': layer_LINESTRAJET0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
